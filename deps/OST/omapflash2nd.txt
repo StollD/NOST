@@ -1,0 +1,8 @@
+# list 2nd files per device
+# format:
+#	Name <AsicId.OmapId> <AsicId.Version> <HS|GP> 2nd-file additional <additional-commandline-parameters>
+
+# OMAP4 real hardware
+SEVM_MDDR_ELPIDA_4G 443007 04 GP Targets\2nd-Downloaders\dnld_startup_omap4_gp.2nd -peripheralboot_reopen -board_config Targets\Configurations\configuration_evm4430es2.0_elpida_4g.txt
+SEVM_MDDR_ELPIDA_4G 443007 04 HS Targets\2nd-Downloaders\dnld_startup_omap4_hs_es2.s2.signed.2nd -peripheralboot_reopen -board_config Targets\Configurations\configuration_evm4430es2.0_elpida_4g.txt
+SEVM_MDDR_ELPIDA_4G 443007 04 HS_FIH Targets\2nd-Downloaders\dnld_startup_omap4_hs_es2.s2.signed.fih.2nd -peripheralboot_reopen -board_config Targets\Configurations\configuration_evm4430es2.0_elpida_4g.txt

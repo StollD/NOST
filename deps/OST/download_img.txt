@@ -1,0 +1,41 @@
+## static struct partition partitions[] = {
+## 	{ "-", 128 },
+## 	{ "xloader", 128 },             -------->   20000
+## 	{ "bootloader", 256 },          -------->   40000
+## 	{ "-", 512 },
+## 	{ "recovery", 8*1024 },         -------->   100000
+## 	{ "boot", 8*1024 },             -------->   900000
+## 	{ "system", 512*1024 },         -------->   1100000 + 40
+## 	{ "cache", 256*1024 },          -------->   9100000
+## 	{ "userdata", 512*1024},        -------->   9140000
+## 	{ "media", 0 },
+## 	{ 0, 0 },
+## };
+
+-omap 4
+-t 36000 -p SEVM_MDDR_ELPIDA_4G -2 
+
+##This script require sysboot usb,emmc e.g. on on on on on on
+
+autoload_chip_driver EMMC
+
+chip_erase 0       20000
+chip_erase 20000   20000
+chip_erase 40000   40000
+
+##xloader partition is at offset 20000
+chip_download 20000 xloader
+
+##bootloader partition is at offset 40000
+##uboot that initial connect through uart
+chip_download 40000 bootloader
+
+##start emmc uboot
+command warm_sw_reset
+
+#todo add stuff to download EVM, kernel, file system through fastboot mode in uboot from eMMC only apply to autofast_u-boot.bin
+
+
+
+
+

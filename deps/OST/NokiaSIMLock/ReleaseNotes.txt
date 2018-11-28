@@ -1,0 +1,12 @@
+Beta 1.0 : This version only support Qualcomm Platform
+Beta 1.1 : This version adds force FTM for MTK platform, but SIMLock funciton doesn't support on MTK platform.
+version 1.0: 
+  1. Add MTK SIMLock function
+  2. Add reboot device function 
+version 1.1:
+  1. Fixed MTK platform Open port fail for first time execution.
+  2. Fixed MTK SIM Lock command.
+version 1.2:
+  1. Add SIM Lockk Status
+  2. Fixed the unlock code length
+  3. add debug log at c:\LogData\NokiaSIMLock\ folder

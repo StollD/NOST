@@ -1,0 +1,256 @@
+# Specify platform memories
+
+memory EMMC  driver Targets\Flash-Drivers\emmc_drv.bin parameters sid 1 width 8 delay 9 rpapi_base 0x00028400 mblock 1 ddr 1
+memory SDRAM parameters address 0x80000000
+
+# Get device definitions
+
+use .\Targets\Definitions\definitions_omap4.txt
+
+RPAPI_BASE   0x00028400
+HEAP_ADDR    HEAP_ADDR_4G
+
+MODE_32
+
+WRITE        CM_MEMIF_EMIF_1_CLKCTRL             0x00000001
+WRITE        CM_MEMIF_EMIF_2_CLKCTRL             0x00000001
+POLL_VALUE   CM_MEMIF_CLKSTCTRL                  0x00000700            0x00000700
+
+# DDR Init
+WRITE        CONTROL_LPDDR2IO1_0                 0x9E9E9E9E
+WRITE        CONTROL_LPDDR2IO1_1                 0x9E9E9E9E
+WRITE        CONTROL_LPDDR2IO1_2                 0x9E9E9E9E
+WRITE        CONTROL_LPDDR2IO2_0                 0x9E9E9E9E
+WRITE        CONTROL_LPDDR2IO2_1                 0x9E9E9E9E
+WRITE        CONTROL_LPDDR2IO2_2                 0x9E9E9E9E
+WRITE        CONTROL_EFUSE_2                        0x004E4000
+WRITE        DMM_LISA_MAP_REGISTER_0             0x80540300
+WRITE        DMM_LISA_MAP_REGISTER_2             0x00000000
+WRITE        DMM_LISA_MAP_REGISTER_3             0xFF020100
+
+                                                 
+# Configure core DPLL no lock
+                                                 
+WRITE        CM_SYS_CLKSEL                       0x00000007
+WRITE        CM_CLKSEL_CORE                      0x00000110
+WRITE        CM_CLKMODE_DPLL_CORE                0x00000004
+POLL_ZERO    CM_IDLEST_DPLL_CORE                 0x00000001
+WRITE        CM_AUTOIDLE_DPLL_CORE               0x00000000
+WRITE        CM_CLKSEL_DPLL_CORE                 0x00007D05
+WRITE        CM_DIV_M2_DPLL_CORE                 0x00000002
+WRITE        CM_DIV_M3_DPLL_CORE                 0x00000005
+WRITE        CM_DIV_M4_DPLL_CORE                 0x00000008
+WRITE        CM_DIV_M5_DPLL_CORE                 0x00000004
+WRITE        CM_DIV_M6_DPLL_CORE                 0x00000006
+WRITE        CM_DIV_M7_DPLL_CORE                 0x00000008
+
+WRITE        EMIF1_PWR_MGMT_CTRL                 0x00000000
+WRITE        EMIF2_PWR_MGMT_CTRL                 0x00000000
+                                             
+# EMIF Config (0x4C000000)
+                                                 
+WRITE        EMIF1_SDRAM_CONFIG                  0x80800EB1
+WRITE        EMIF1_DDR_PHY_CTRL_1                0x849FFFF5
+WRITE        EMIF1_DDR_PHY_CTRL_1_SHDW           0x849FF408
+WRITE        EMIF1_DDR_PHY_CTRL_2                0x00000000
+WRITE        EMIF1_READ_IDLE_CTRL                0x00050139
+WRITE        EMIF1_READ_IDLE_CTRL_SHDW           0x00050139
+WRITE        EMIF1_SDRAM_TIM_1                   0x04442049
+WRITE        EMIF1_SDRAM_TIM_1_SHDW              0x10EB066A
+WRITE        EMIF1_SDRAM_TIM_2                   0x1002008A
+WRITE        EMIF1_SDRAM_TIM_2_SHDW              0x20370DD2
+WRITE        EMIF1_SDRAM_TIM_3                   0x0040802F
+WRITE        EMIF1_SDRAM_TIM_3_SHDW              0x00B1C33F
+WRITE        EMIF1_ZQ_CONFIG                     0x50073214
+# Delay 
+WAIT_N       0x000007D0                          
+WRITE        EMIF1_LPDDR2_MODE_REG_CFG           0x0000000A
+WRITE        EMIF1_LPDDR2_MODE_REG_DATA          0x000000FF
+# Delay 
+WAIT_N       0x0000000A                          
+WRITE        EMIF1_LPDDR2_MODE_REG_CFG           0x00000001
+WRITE        EMIF1_LPDDR2_MODE_REG_DATA          0x00000023
+WRITE        EMIF1_LPDDR2_MODE_REG_CFG           0x00000002
+WRITE        EMIF1_LPDDR2_MODE_REG_DATA          0x00000004
+WRITE        EMIF1_SDRAM_CONFIG                  0x98801AB1
+WRITE        EMIF1_DDR_PHY_CTRL_1                0x849FFFF8
+WRITE        EMIF1_SDRAM_REF_CTRL                0x0000004A
+WRITE        EMIF1_SDRAM_REF_CTRL_SHDW           0x00000618
+WRITE        EMIF1_LPDDR2_MODE_REG_CFG           0x40000010
+WRITE        EMIF1_LPDDR2_MODE_REG_DATA          0x00000000
+
+# EMIF Config (0x4D000000)
+                                                 
+WRITE        EMIF2_SDRAM_CONFIG                  0x80800EB1
+WRITE        EMIF2_DDR_PHY_CTRL_1                0x849FFFF5
+WRITE        EMIF2_DDR_PHY_CTRL_1_SHDW           0x849FF408
+WRITE        EMIF2_DDR_PHY_CTRL_2                0x00000000
+WRITE        EMIF2_READ_IDLE_CTRL                0x00050139
+WRITE        EMIF2_READ_IDLE_CTRL_SHDW           0x00050139
+WRITE        EMIF2_SDRAM_TIM_1                   0x04442049
+WRITE        EMIF2_SDRAM_TIM_1_SHDW              0x10EB066A
+WRITE        EMIF2_SDRAM_TIM_2                   0x1002008A
+WRITE        EMIF2_SDRAM_TIM_2_SHDW              0x20370DD2
+WRITE        EMIF2_SDRAM_TIM_3                   0x0040802F
+WRITE        EMIF2_SDRAM_TIM_3_SHDW              0x00B1C33F
+WRITE        EMIF2_ZQ_CONFIG                     0x50073214
+# Delay 
+WAIT_N       0x000007D0                          
+WRITE        EMIF2_LPDDR2_MODE_REG_CFG           0x0000000A
+WRITE        EMIF2_LPDDR2_MODE_REG_DATA          0x000000FF
+# Delay 
+WAIT_N       0x0000000A                          
+WRITE        EMIF2_LPDDR2_MODE_REG_CFG           0x00000001
+WRITE        EMIF2_LPDDR2_MODE_REG_DATA          0x00000023
+WRITE        EMIF2_LPDDR2_MODE_REG_CFG           0x00000002
+WRITE        EMIF2_LPDDR2_MODE_REG_DATA          0x00000004
+WRITE        EMIF2_SDRAM_CONFIG                  0x98801AB1
+WRITE        EMIF2_DDR_PHY_CTRL_1                0x849FFFF8
+WRITE        EMIF2_SDRAM_REF_CTRL                0x0000004A
+WRITE        EMIF2_SDRAM_REF_CTRL_SHDW           0x00000618
+WRITE        EMIF2_LPDDR2_MODE_REG_CFG           0x40000010
+WRITE        EMIF2_LPDDR2_MODE_REG_DATA          0x00000000
+                                                 
+# Lock core DPLL shadow
+
+WRITE        CM_CLKMODE_DPLL_CORE                0x0000000A
+WRITE        CM_SHADOW_FREQ_CONFIG1              0x0000170D
+
+POLL_NZERO   CM_SHADOW_FREQ_CONFIG1              0x00000001
+POLL_NZERO   CM_IDLEST_DPLL_CORE                 0x00000001
+WRITE        CM_DLL_CTRL                         0x00000000
+# Delay 
+WAIT_N       0x000000C8                          
+POLL_VALUE   EMIF1_STATUS                        0x00000004 0x00000004
+POLL_VALUE   EMIF2_STATUS                        0x00000004 0x00000004
+#WRITE        CM_MEMIF_EMIF_1_CLKCTRL             0x00000001
+#WRITE        CM_MEMIF_EMIF_2_CLKCTRL             0x00000001
+WRITE        EMIF1_PWR_MGMT_CTRL                 0x80000000
+WRITE        EMIF2_PWR_MGMT_CTRL                 0x80000000
+WRITE        EMIF1_L3_CONFIG                     0x0A0000FF
+WRITE        EMIF2_L3_CONFIG                     0x0A0000FF
+
+# Reset EMIF PHY
+MODIFY       0x4C000060                          0x00000400 0x00000400
+MODIFY       0x4D000060                          0x00000400 0x00000400
+WRITE        0x80000000                          0x00000000
+
+WRITE        PRM_VC_CFG_I2C_MODE                 0x00000000
+WRITE        PRM_VC_CFG_I2C_CLK                  0x00006026
+WRITE        PRM_VC_VAL_BYPASS                   0x00225512
+MODIFY       PRM_VC_VAL_BYPASS                   0x01000000 0x01000000
+POLL_ZERO    PRM_VC_VAL_BYPASS                   0x01000000
+MODIFY       PRM_IRQSTATUS_MPU                   0x00000000 0x00000000
+WRITE        PRM_VC_VAL_BYPASS                   0x00205B12
+MODIFY       PRM_VC_VAL_BYPASS                   0x01000000 0x01000000
+POLL_ZERO    PRM_VC_VAL_BYPASS                   0x01000000
+MODIFY       PRM_IRQSTATUS_MPU                   0x00000000 0x00000000
+WRITE        PRM_VC_VAL_BYPASS                   0x00206112
+MODIFY       PRM_VC_VAL_BYPASS                   0x01000000 0x01000000
+POLL_ZERO    PRM_VC_VAL_BYPASS                   0x01000000
+MODIFY       PRM_IRQSTATUS_MPU                   0x00000000 0x00000000
+                                                 
+# --- PRCM INIT ---
+                                                 
+WRITE        CM_SYS_CLKSEL                       0x00000007
+                                                 
+# Configure MPU DPLL
+                                                 
+WRITE        CM_CLKMODE_DPLL_MPU                 0x00000004
+POLL_ZERO    CM_IDLEST_DPLL_MPU                  0x00000001
+WRITE        CM_AUTOIDLE_DPLL_MPU                0x00000000
+WRITE        CM_CLKSEL_DPLL_MPU                  0x00001A02
+WRITE        CM_DIV_M2_DPLL_MPU                  0x00000101
+WRITE        CM_CLKMODE_DPLL_MPU                 0x00000017
+POLL_NZERO   CM_IDLEST_DPLL_MPU                  0x00000001
+                                                 
+# Configure PER DPLL
+                                                 
+WRITE        CM_CLKMODE_DPLL_PER                 0x00000004
+POLL_ZERO    CM_IDLEST_DPLL_PER                  0x00000001
+WRITE        CM_AUTOIDLE_DPLL_PER                0x00000000
+WRITE        CM_CLKSEL_DPLL_PER                  0x00000A00
+WRITE        CM_DIV_M2_DPLL_PER                  0x00000104
+WRITE        CM_DIV_M3_DPLL_PER                  0x00000103
+WRITE        CM_DIV_M4_DPLL_PER                  0x00000106
+WRITE        CM_DIV_M5_DPLL_PER                  0x00000105
+WRITE        CM_DIV_M6_DPLL_PER                  0x00000102
+WRITE        CM_DIV_M7_DPLL_PER                  0x00000103
+WRITE        CM_CLKMODE_DPLL_PER                 0x00000007
+POLL_NZERO   CM_IDLEST_DPLL_PER                  0x00000001
+
+# Configure USB DPLL
+                                                 
+WRITE        CM_CLKSEL_USB_60MHZ                 0x00000001
+WRITE        CM_CLKMODE_DPLL_USB                 0x00000004
+POLL_ZERO    CM_IDLEST_DPLL_USB                  0x00000001
+WRITE        CM_AUTOIDLE_DPLL_USB                0x00000000
+WRITE        CM_CLKSEL_DPLL_USB                  0x00003201
+WRITE        CM_DIV_M2_DPLL_USB                  0x00000102
+WRITE        CM_CLKDCOLDO_DPLL_USB               0x00000100
+WRITE        CM_CLKMODE_DPLL_USB                 0x00000007
+POLL_NZERO   CM_IDLEST_DPLL_USB                  0x00000001
+WRITE        CM_CLKDCOLDO_DPLL_USB               0x00000100
+                                                 
+# Enable all clocks
+                                                 
+WRITE        CM_MPU_M3_MPU_M3_CLKCTRL            0x00000001
+WRITE        CM_MPU_M3_CLKSTCTRL                 0x00000002
+POLL_NZERO   CM_MPU_M3_CLKSTCTRL                 0x00000100
+WRITE        L4PER_CM2                           0x00000002
+WRITE        CM_L3INIT_HSMMC1_CLKCTRL            0x00000002
+WRITE        CM_L3INIT_HSMMC1_CLKCTRL            0x01000000
+WRITE        CM_L3INIT_HSMMC2_CLKCTRL            0x00000002
+WRITE        CM_L3INIT_HSMMC2_CLKCTRL            0x01000000
+WRITE        CM_L4PER_MMCSD3_CLKCTRL             0x00000002
+POLL_ZERO    CM_L4PER_MMCSD3_CLKCTRL             0x00070000
+WRITE        CM_L4PER_MMCSD4_CLKCTRL             0x00000002
+POLL_ZERO    CM_L4PER_MMCSD4_CLKCTRL             0x00070000
+WRITE        CM_L4PER_MMCSD5_CLKCTRL             0x00000002
+POLL_ZERO    CM_L4PER_MMCSD5_CLKCTRL             0x00030000
+WRITE        CM_L4PER_UART1_CLKCTRL              0x00000002
+POLL_ZERO    CM_L4PER_UART1_CLKCTRL              0x00030000
+WRITE        CM_L4PER_UART2_CLKCTRL              0x00000002
+POLL_ZERO    CM_L4PER_UART2_CLKCTRL              0x00030000
+WRITE        CM_L4PER_UART3_CLKCTRL              0x00000002
+POLL_ZERO    CM_L4PER_UART3_CLKCTRL              0x00030000
+WRITE        CM_L4PER_UART4_CLKCTRL              0x00000002
+POLL_ZERO    CM_L4PER_UART4_CLKCTRL              0x00030000
+WRITE        CM_MEMIF_CLKSTCTRL                  0x00000003
+WRITE        CM_MEMIF_EMIF_1_CLKCTRL             0x00000001
+POLL_ZERO    CM_MEMIF_EMIF_1_CLKCTRL             0x00030000
+WRITE        CM_MEMIF_EMIF_2_CLKCTRL             0x00000001
+POLL_ZERO    CM_MEMIF_EMIF_2_CLKCTRL             0x00030000
+WRITE        CM_L3INSTR_L3_3_CLKCTRL             0x00000001
+POLL_ZERO    CM_L3INSTR_L3_3_CLKCTRL             0x00030000
+WRITE        CM_L3INSTR_L3_INSTR_CLKCTRL         0x00000001
+POLL_ZERO    CM_L3INSTR_L3_INSTR_CLKCTRL         0x00030000
+WRITE        CM_L3INSTR_INTRCONN_WP1_CLKCTRL     0x00000001
+POLL_ZERO    CM_L3INSTR_INTRCONN_WP1_CLKCTRL     0x00030000
+WRITE        CM_L3INIT_HSUSBOTG_CLKCTRL          0x00000001
+WRITE        CM_L3INIT_HSUSBTLL_CLKCTRL          0x00000001
+WRITE        CM_L3INIT_FSUSB_CLKCTRL             0x00000002
+WRITE        CM_L3INIT_USBPHY_CLKCTRL            0x00000301
+
+# Debug
+DEBUG_REG    0x0001 0x4A31e058 0xFFFF0000 0x001B0000
+DEBUG_REG    0x0002 CONTROL_CORE_PAD_GPMC_NCS0 0x0000FFFF 0x00000003
+DEBUG_REG    0x0003 0x4A31e054 0xFFFF0000 0x001B0000
+
+DEBUG_UART   0x0003
+
+MODE_16
+
+MODIFY CONTROL_CORE_PAD_UART3_CTS_RCTX            0x001F 0x0080
+MODIFY CONTROL_CORE_PAD_UART3_RTS_SD              0x001F 0x0000
+MODIFY CONTROL_CORE_PAD_UART3_RX_IRRX_EVT         0x001F 0x0000
+MODIFY CONTROL_CORE_PAD_UART3_TX_IRTX_EVT         0x001F 0x0000
+
+
+# --- PRCM INIT DONE ---
+
+# MMC2 DAT7-DAT4 Pad Config 
+WRITE CONTROL_CORE_PAD_GPMC_AD4	0x0119
+WRITE CONTROL_CORE_PAD_GPMC_AD5	0x0119
+WRITE CONTROL_CORE_PAD_GPMC_AD6	0x0119
+WRITE CONTROL_CORE_PAD_GPMC_AD7	0x0119
