@@ -26,7 +26,7 @@ namespace NOST.Patches
                 
                 // Extract the file using QuickLZ
                 ProcessStartInfo info = new ProcessStartInfo();
-                info.FileName = Path.Combine(Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "Tools"), "exdupe.exe");
+                info.FileName = Path.Combine(Path.Combine(Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), ".."), "Tools"), "exdupe.exe");
                 info.Arguments = "-R " + fwPath + " " + directory;
                 
                 // Ask for confirmation

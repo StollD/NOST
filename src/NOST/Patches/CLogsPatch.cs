@@ -13,7 +13,7 @@ namespace NOST.Patches
         public static Boolean Prefix(ref String appName, ref String logPath)
         {
             appName = Program.Version;
-            String logDir = Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "Logs");
+            String logDir = Path.Combine(Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), ".."), "Logs");
             logPath = Path.Combine(logDir, Path.GetFileName(logPath));
             Directory.CreateDirectory(logDir);
             return true;

@@ -26,7 +26,7 @@ namespace NOST
 				Process.Start(processStartInfo);
 				Application.Exit();
 			}
-			catch (Exception exception)
+			catch (Exception)
 			{
 			}
 		}
