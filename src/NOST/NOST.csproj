@@ -59,13 +59,20 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="YamlDotNet, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\YamlDotNet.5.2.1\lib\net35\YamlDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyResolver.cs" />
+    <Compile Include="Patches\BtnPhoneKeyInfoPatch.cs" />
     <Compile Include="Patches\CLogsPatch.cs" />
     <Compile Include="Patches\DoAuthenticationPatch.cs" />
     <Compile Include="Patches\GetModulePathPatch.cs" />
+    <Compile Include="Patches\InitializeComponentPatch.cs" />
     <Compile Include="Patches\LoadFwImagePatch.cs" />
+    <Compile Include="Patches\LoadTextPatch.cs" />
     <Compile Include="Patches\MainImageFilterPatch.cs" />
     <Compile Include="Patches\OpenFileDialogPatch.cs" />
     <Compile Include="Patches\OptionVisiblePatch.cs" />
@@ -75,6 +82,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\HarmonyType.cs" />
+    <Compile Include="Utilities\LocaleOverride.cs" />
     <Compile Include="VistaSecurity.cs" />
   </ItemGroup>
   <ItemGroup>

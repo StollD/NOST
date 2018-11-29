@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using Harmony;
 using MainForms;
+using NOST.Utilities;
 
 namespace NOST
 {
@@ -14,6 +15,11 @@ namespace NOST
         /// The version of the Program
         /// </summary>
         public const String Version = "NOST v0.2";
+
+        /// <summary>
+        /// A reference to the main form of OST
+        /// </summary>
+        public static Form1 OSTForm;
         
         [STAThread]
         public static void Main(String[] args)
@@ -28,7 +34,10 @@ namespace NOST
                 }
 
                 // Trigger OST Load by referencing one of its types
-                Form1 trigger = null;
+                OSTForm = null;
+                
+                // Load locales
+                LocaleOverride.Load();
 
                 // Patching
                 HarmonyInstance instance = HarmonyInstance.Create("io.tmsp.nost");
