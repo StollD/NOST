@@ -14,7 +14,7 @@ namespace NOST
         /// <summary>
         /// The version of the Program
         /// </summary>
-        public const String Version = "NOST v0.2";
+        public const String Version = "NOST v0.3";
 
         /// <summary>
         /// A reference to the main form of OST
