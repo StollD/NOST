@@ -66,7 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyResolver.cs" />
-    <Compile Include="Patches\BtnPhoneKeyInfoPatch.cs" />
+    <Compile Include="Patches\BtnNextPatch.cs" />
     <Compile Include="Patches\CLogsPatch.cs" />
     <Compile Include="Patches\DoAuthenticationPatch.cs" />
     <Compile Include="Patches\GetModulePathPatch.cs" />
