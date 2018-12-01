@@ -19,8 +19,30 @@ namespace NOST.Patches
             // Check if the Image file is a .zip or .qlz file
             if (fwPath.EndsWith(".zip"))
             {
-                // TODO: Add .zip file support
-                return false;
+                String directory = Path.GetTempFileName().Replace(".tmp", "");
+
+                // Extract the file using the bundled 7z
+                ProcessStartInfo info = new ProcessStartInfo();
+                info.FileName = Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "7z.exe");
+                info.Arguments = "x -o\"" + directory + "\" \"" + fwPath + "\"";
+
+                // Extract the file
+                Process decompressor = Process.Start(info);
+                if (decompressor != null)
+                {
+                    decompressor.WaitForExit();
+                }
+
+                // Try to get the extracted .mlf file
+                String mlfPath = Directory.GetFiles(directory, "*.mlf").FirstOrDefault();
+                if (String.IsNullOrEmpty(mlfPath))
+                {
+                    __result = 50718;
+                    return false;
+                }
+
+                // Update the selected firmware path
+                fwPath = mlfPath;
             }
 
             if (fwPath.EndsWith(".qlz"))
