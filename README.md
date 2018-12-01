@@ -25,8 +25,6 @@ background without the user having to download any other tools. The formats that
 can be used in images are .zip and .qlz
 
 ### .zip firmwares
-**Not implemented yet**
-
 .zip firmware files are simply archives of the (edited) files that would normally
 be extracted from an .nb0 file. This means, if you extract a .nb0 with the extractor
 found on XDA, the contents of the `*_unpacked` folder it creates should be the
