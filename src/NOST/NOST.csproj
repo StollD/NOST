@@ -71,6 +71,7 @@
     <Compile Include="Patches\DoAuthenticationPatch.cs" />
     <Compile Include="Patches\GetModulePathPatch.cs" />
     <Compile Include="Patches\GetOptionListPatch.cs" />
+    <Compile Include="Patches\GetRegionNamePatch.cs" />
     <Compile Include="Patches\InitializeComponentPatch.cs" />
     <Compile Include="Patches\LoadFwImagePatch.cs" />
     <Compile Include="Patches\LoadTextPatch.cs" />
