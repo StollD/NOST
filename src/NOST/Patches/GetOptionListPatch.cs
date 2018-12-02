@@ -18,9 +18,7 @@ namespace NOST.Patches
                 product.FieldType.GetMethod("HasUserOption", BindingFlags.Instance | BindingFlags.Public);
             PropertyInfo securityVersion =
                 product.FieldType.GetProperty("SecurityVersion", BindingFlags.Instance | BindingFlags.Public);
-           // Type enumType = hasUserOption.GetParameters()[0].ParameterType;
-            Boolean HasUserOption = (Boolean) hasUserOption.Invoke(productValue,
-                new Object[] {12});//Convert.ChangeType(Enum.Parse(enumType, "COLLECT_APR_LOG"), enumType)});
+            Boolean HasUserOption = (Boolean) hasUserOption.Invoke(productValue, new Object[] {12});
             String SecurityVersion = (String) securityVersion.GetValue(productValue, null);
             
             if (HasUserOption && SecurityVersion == "0x0001")
