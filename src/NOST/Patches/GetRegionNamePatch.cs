@@ -31,7 +31,7 @@ namespace NOST.Patches
                         String[] strArrays = lower.Split(new Char[] { '-' });
                         if ((Int32)strArrays.Length <= 0)
                         {
-                            __result =  "";
+                            __result =  "en";
                             return false;
                         }
                         __result =  strArrays[0];
@@ -40,7 +40,7 @@ namespace NOST.Patches
                 }
                 registryKey.Close();
             }
-            __result =  "";
+            __result =  "en";
             return false;
         }
     }
