@@ -1,0 +1,2 @@
+TITLE: "诺基亚刷机工具 Nokia Service Tool"
+USERMSG_SECURITY_DENY: "你的手机拒绝刷入此固件。请确定您的 Bootloader 是否已经被完全解锁，包括 critical 解锁？\n如果不确定，请联系 Hikari Calyx Tech 完成解锁流程。"
