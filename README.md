@@ -65,4 +65,7 @@ possible, but harder since everything has to be written as a patch.
 
 ## License
 OST LA 6.0.4 is copyrighted by the respective authors. It is not modified permanently.
+
 The custom NOST code is licensed under the GNU General Public License.
+
+Icon by Freepik © Flaticon
