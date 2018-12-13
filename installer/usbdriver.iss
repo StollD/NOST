@@ -5,7 +5,7 @@ usbdriver_size=26.7 MB
 [Code]
 const
 	usbdriver_url = 'http://github.com/StollD/nokia-driver-installer/releases/download/v1.1.0/Phone_Nokia_USB_Driver_v1.1.0.exe';  
-	usbdriver_upgradecode = '{C3863576-B663-43B9-B927-CDB79845D9D2}';
+	usbdriver_upgradecode = '{5DEB6D92-C39B-4DC3-8885-0474F6DEFC9A}';
 
 procedure usbdriver(minVersion: string);
 begin
