@@ -331,7 +331,7 @@ begin
 #endif
 
   // Custom package: Nokia USB Driver
-  usbdriver('1.1.0');
+  usbdriver('1.4.0');
 
 	Result := true;
 end;
