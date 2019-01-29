@@ -31,8 +31,8 @@ found on XDA, the contents of the `*_unpacked` folder it creates should be the
 contents of your .zip.
 
 ### .qlz firmwares
-.qlz files are based on [QuickLZ](www.quicklz.com) compression, which gives them a small
-size but also a low decompression time. The tool to generate them is called [exdupe](http://www.quicklz.com/exdupe/).
+.qlz files are based on [QuickLZ](https://www.quicklz.com/) compression, which gives them a small
+size but also a low decompression time. The tool to generate them is called [exdupe](https://www.quicklz.com/exdupe/).
 
 Generating these images is pretty straigtforward. Assuming you are on windows,
 download the exdupe tool from the link above (or take it from the NOST `Tools` folder)
