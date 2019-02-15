@@ -55,7 +55,7 @@ namespace NOST.Patches
                     Path.Combine(
                         Path.Combine(Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), ".."),
                             "Tools"), "exdupe.exe");
-                info.Arguments = "-R " + fwPath + " " + directory;
+                info.Arguments = "-R \"" + fwPath + "\" " + directory;
 
                 // Extract the file
                 Process decompressor = Process.Start(info);
