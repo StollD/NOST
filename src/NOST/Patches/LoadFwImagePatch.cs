@@ -17,7 +17,7 @@ namespace NOST.Patches
         public static Boolean Prefix(ref String fwPath, ref Int64 __result)
         {
             // Check if the Image file is a .zip or .qlz file
-            if (fwPath.EndsWith(".zip"))
+            if (fwPath.ToLower().EndsWith(".zip"))
             {
                 String directory = Path.GetTempFileName().Replace(".tmp", "");
 
@@ -45,7 +45,7 @@ namespace NOST.Patches
                 fwPath = mlfPath;
             }
 
-            if (fwPath.EndsWith(".qlz"))
+            if (fwPath.ToLower().EndsWith(".qlz"))
             {
                 String directory = Path.GetTempFileName().Replace(".tmp", "");
 

@@ -7,7 +7,7 @@
 #define use_vc2008
 
 #define MyAppName "NOST"
-#define MyAppVersion "0.5"
+#define MyAppVersion "0.6"
 #define MyAppPublisher "Dorian Stoll"
 #define MyAppURL "https://github.com/StollD/NOST"
 #define MyAppExeName "NOST.Launcher.exe"
@@ -181,9 +181,6 @@ WindowsServicePack=Windows %1 Service Pack %2
 #include "scripts\products\sql2008express.iss"
 #endif
 
-; Custom Package: Nokia USB Driver
-#include "usbdriver.iss"
-
 
 [Code]
 function InitializeSetup(): boolean;
@@ -329,9 +326,6 @@ begin
 #ifdef use_sql2008express
 	sql2008express();
 #endif
-
-  // Custom package: Nokia USB Driver
-  usbdriver('1.4.0');
 
 	Result := true;
 end;
