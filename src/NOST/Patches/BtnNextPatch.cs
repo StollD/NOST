@@ -19,8 +19,6 @@ namespace NOST.Patches
                 typeof(Form1).GetProperty("DeviceConnected", BindingFlags.Instance | BindingFlags.NonPublic);
             if ((Boolean) deviceConnected.GetValue(__instance, null))
             {
-                // Try to make the "Edit Phone Information" button actually useable, 
-                // as a display for fastboot oem device-info
                 Process p = new Process();
                 p.StartInfo.FileName = Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location),
                     "fastboot-android.exe");

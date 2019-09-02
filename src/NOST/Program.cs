@@ -14,7 +14,7 @@ namespace NOST
         /// <summary>
         /// The version of the Program
         /// </summary>
-        public const String Version = "NOST v0.6";
+        public const String Version = "NOST v0.7-rc";
 
         /// <summary>
         /// A reference to the main form of OST
@@ -57,14 +57,28 @@ namespace NOST
                     throw new Exception("Couldn't start OST!");
                 }
                 enableOptions.Invoke(null, null);
-
-                // Start OST
-                Type OST = types.FirstOrDefault(t => t.Name == "Program" && t.Namespace == "OnlineUpdateTool");
-                if (OST == null)
+                
+                // Give the user all permissions
+                Type permissions = types.FirstOrDefault(t => t.Namespace + "." + t.Name == "Utils.STSLicense");
+                if (permissions == null)
                 {
                     throw new Exception("Couldn't start OST!");
                 }
-                MethodInfo info = OST.GetMethod("Main", BindingFlags.NonPublic | BindingFlags.Static);
+                MethodInfo resetAllTrue =
+                    permissions.GetMethod("resetAllTrue", BindingFlags.Static | BindingFlags.Public);
+                if (resetAllTrue == null)
+                {
+                    throw new Exception("Couldn't start OST!");
+                }
+                resetAllTrue.Invoke(null, null);
+
+                // Start OST
+                Type ost = types.FirstOrDefault(t => t.Name == "Program" && t.Namespace == "OnlineUpdateTool");
+                if (ost == null)
+                {
+                    throw new Exception("Couldn't start OST!");
+                }
+                MethodInfo info = ost.GetMethod("Main", BindingFlags.NonPublic | BindingFlags.Static);
                 if (info == null)
                 {
                     throw new Exception("Couldn't start OST!");

@@ -8,7 +8,7 @@ using System.Text;
 namespace NOST.Patches
 {
     [HarmonyType("UserForms.UserInterAction")]
-    [HarmonyPatch("DoAuthentication")]
+    [HarmonyPatch("AcquireAuthentication")]
     public class DoAuthenticationPatch
     {
         public static Boolean Prefix(ref Boolean __result)

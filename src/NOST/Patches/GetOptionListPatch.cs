@@ -16,12 +16,12 @@ namespace NOST.Patches
             Object productValue = product.GetValue(__instance);
             MethodInfo hasUserOption =
                 product.FieldType.GetMethod("HasUserOption", BindingFlags.Instance | BindingFlags.Public);
-            PropertyInfo securityVersion =
-                product.FieldType.GetProperty("SecurityVersion", BindingFlags.Instance | BindingFlags.Public);
+            MethodInfo hasSecurityVersion =
+                product.FieldType.GetMethod("HasSecurityVersion", BindingFlags.Instance | BindingFlags.Public);
             Boolean HasUserOption = (Boolean) hasUserOption.Invoke(productValue, new Object[] {12});
-            String SecurityVersion = (String) securityVersion.GetValue(productValue, null);
-            
-            if (HasUserOption && SecurityVersion == "0x0001")
+            Boolean SecurityVersion = (Boolean) hasSecurityVersion.Invoke(productValue, null);
+
+            if (HasUserOption && SecurityVersion)
             {
                 __result.RemoveAt(__result.Count - 1);
             }
