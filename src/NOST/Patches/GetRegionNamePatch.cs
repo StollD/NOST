@@ -19,7 +19,9 @@ namespace NOST.Patches
                 String value = registryKey.GetValue("Locale", "0409") as String;
                 if (!string.IsNullOrEmpty(value))
                 {
-                    CultureInfo cultureInfo = new CultureInfo(int.Parse(value, NumberStyles.AllowHexSpecifier));
+                    int cultureId = int.Parse(value, NumberStyles.AllowHexSpecifier);
+                    CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
+                    CultureInfo cultureInfo = Array.Find(cultures, culture => culture.LCID == cultureId);
                     if (cultureInfo != null)
                     {
                         String lower = cultureInfo.Name.ToLower();
